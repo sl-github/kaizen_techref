@@ -31,13 +31,20 @@ back out to the end-users as knowledge.
 
 The major parts are:
 
-* :ref:`Overview` - Topics of a general nature, important to basic understanding of Kaizen
-* :ref:`acquire` - Acquisition of raw building data
-* :ref:`analyze` - 
-* :ref:`advise` - 
-* :ref:`Security` -
-* :ref:`gui` -
-* :ref:`api` - 
+====================  =============================
+:ref:`Concepts`       Topics of a general nature, important to basic understanding of Kaizen.
+:ref:`Architecture`   System Design         
+:ref:`acquire`        Acquisition of raw building data.
+:ref:`analyze`        Turing raw data into Actionable information (Insights)
+:ref:`advise`         Informing Users of the analysis results.
+:ref:`Security`       Protection of the System and Data
+:ref:`database`       Database Structure 
+:ref:`gui`            Interacting with Kaizen via Mouse & Keyboard
+:ref:`api`            Interacting with Kaizen via code
+:ref:`integration`    Information exchange with other systems.
+:ref:`international`  for non-English speakers.
+====================  =============================
+
 
 
 Introduction
@@ -54,9 +61,15 @@ Introduction
 
 .. toctree::
     :maxdepth: 3
-    :caption: Overview
+    :caption: Concepts
 
-    part1/concepts
+    concepts/terms
+
+
+.. toctree::
+    :maxdepth: 3
+    :caption: Architecture
+
 
 
 .. _acquire:
@@ -65,9 +78,9 @@ Introduction
     :maxdepth: 3
     :caption: Data Acquisition
 
-    part2/devices
-    part2/intake_queues
-    part2/intake_servers
+    acquire/devices
+    acquire/intake_queues
+    acquire/intake_servers
 
 
 .. _analyze:
@@ -84,12 +97,19 @@ Introduction
     :caption: User Advisement
 
 
-.. _security:
+.. toctree::
+    :maxdepth: 3
+    :caption: Security
+
+
+.. _database:
 
 .. toctree::
     :maxdepth: 3
-    :caption: Security Issues
+    :caption: Data Storage
 
+    database/ctTrends
+	
 
 .. _gui:
 
@@ -103,6 +123,16 @@ Introduction
 .. toctree::
     :maxdepth: 3
     :caption: Programing Interface
+
+
+.. toctree::
+    :maxdepth: 3
+    :caption: Integration
+    
+
+.. toctree::
+    :maxdepth: 3
+    :caption: International
 
 
 Indices and tables
