@@ -1,5 +1,5 @@
 Preface
-=======
+-------
 
 All products embody the visions of their designers, the requirements of the problem they 
 attempt to solve, and the constraints of the environment in which they operate.  

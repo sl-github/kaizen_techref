@@ -32,7 +32,7 @@ back out to the end-users as knowledge.
 The major parts are:
 
 ====================  =============================
-:ref:`Concepts`       Topics of a general nature, important to basic understanding of Kaizen.
+:ref:`Overview`       Topics of a general nature, important to basic understanding of Kaizen.
 :ref:`Architecture`   System Design         
 :ref:`acquire`        Acquisition of raw building data.
 :ref:`analyze`        Turing raw data into Actionable information (Insights)
@@ -46,24 +46,18 @@ The major parts are:
 ====================  =============================
 
 
-
-Introduction
-============
-
 .. toctree::
     :maxdepth: 3
-    
-    preface
+
     outline
-    license
-    contact
-
+    intro
+    
 
 .. toctree::
     :maxdepth: 3
-    :caption: Concepts
+    :caption: Overview
 
-    concepts/terms
+    overview/terms
 
 
 .. toctree::

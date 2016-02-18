@@ -1,5 +1,5 @@
 Contact Us
-==========
+----------
 
 This document provides in-depth technical details of our *Kaizen* product.  
 All questions and comments can be directed to::

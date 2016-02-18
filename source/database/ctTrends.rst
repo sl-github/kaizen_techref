@@ -1,8 +1,32 @@
 ctTrends
 ========
 
+.. important::
+  ctTrends is heart of the Kaizen.  It must support fast query and update operations. 
+  All accessing code shall avoid the following situations which degrade performance:
+
+  * unindexed queries.  The _id has been carefully crafted to answer all common queries through
+    clever regex requests.
+  * asking for part of a day bucket.  Instead retrieve the entire bucket and discard any unwanted 
+    samples client-side.
+  * using ctTrends where ctSummary would be sufficient.
+  
+.. tip::
+  Use *upsert* and upsert operators ($inc, $set, ...) to avoid read/write round-trips of the data, 
+  and the associated document-locking + read-write race conditions.  These operators provide 
+  atomic document updates. 
+
+
 Latest
 ------
+
+Trend logs are stored, not as individual samples, but as sets of date-related samples - called 
+*day buckets*.  This format mirrors how the data is used (i.e. by day, or range of days), and  
+greatly reduces storage space, by factoring out the significant overhead needed to 
+identify individual samples.  Samples are time-value pairs.  Sample values may be any BSON 
+datatype (usually INT, FLOAT, BOOLAN. STRING[future]).  Day Buckets typically contain 24, 96, 
+288, or 1440 samples representing hourly, 15 min, 5 min, and 1 min sample polling frequencies.  
+Unused timeslots are obmitted.  Both Polled and COV trends are easily accommodated.
 
 .. sidebar:: ctTrends 
 
@@ -104,3 +128,15 @@ last
 ts (timestamp) 
   The server time marking when this document was last updated.
   
+
+Write Concern
+-------------
+
+MongoDB has a configurable write concern, to allow balancing the importance of 
+guaranteeing that all writes are fully recorded in the database against the speed of the insert. 
+For example, if you issue writes without ack-required, the write operations will return very fast, 
+but you cannot be certain the write succeeded. Conversely, a write with ack_required, 
+will not return as quickly but you can be certain the write succeeded.
+
+We use w=1 to to ensure that MongoDB acknowledges inserts. We choose not to wait for acknowledgement 
+of the write to journal, or the write to propograte to a majority of replica set members. 
