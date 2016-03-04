@@ -7,9 +7,14 @@
 Kaizen Technical Reference
 ==========================
 
+
+
+
 -------------------------------------
 A Compendium of Vision & Requirements
 -------------------------------------
+
+
 
 :Edition: 1
 :Date: 2016-02-10
